@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./chart.scss";
 import {
   XAxis,
@@ -8,43 +8,106 @@ import {
   BarChart,
   YAxis,
   Bar,
-  Legend,
 } from "recharts";
-import { collection, query, where, onSnapshot } from "firebase/firestore";
-import { db } from "../../firebase";
 
-const data = [
-  { name: "Jan", Total: 1200 },
-  { name: "Fev", Total: 2100 },
-  { name: "Mar", Total: 800 },
-  { name: "Apr", Total: 1600 },
-  { name: "May", Total: 900 },
-  { name: "June", Total: 1200 },
-  { name: "July", Total: 2100 },
-  { name: "Aug", Total: 800 },
-  { name: "Sept", Total: 1600 },
-  { name: "Oct", Total: 900 },
-  { name: "Nov", Total: 900 },
-  { name: "Dec", Total: 900 },
-];
+import { DataResultImageContext } from "../../context/DataResultImageContext";
 
 const Chart = ({ aspect, title }) => {
-  useEffect(() => {
-    const q = query(
-      collection(db, "Result_Image"),
-      where("result_handle", "==", 1)
-    );
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      snapshot.docChanges().forEach((change) => {
-        // console.log(change);
-        if (change.type === "added") {
-          console.log("data: ", change.doc.data());
-        }
-      });
-    });
-    return () => unsubscribe();
-  }, []);
+  var temp = useContext(DataResultImageContext).datas;
+  const [data_detail, set_data_detail] = useState([]);
 
+  var number_pass = {
+    on_jan: 0,
+    on_fev: 0,
+    on_mar: 0,
+    on_apr: 0,
+    on_may: 0,
+    on_june: 0,
+    on_july: 0,
+    on_aug: 0,
+    on_sept: 0,
+    on_oct: 0,
+    on_nov: 0,
+    on_dec: 0,
+  };
+
+  var data = [
+    { name: "Jan", Total: 0 },
+    { name: "Fev", Total: 0 },
+    { name: "Mar", Total: 0 },
+    { name: "Apr", Total: 0 },
+    { name: "May", Total: 0 },
+    { name: "June", Total: 0 },
+    { name: "July", Total: 0 },
+    { name: "Aug", Total: 0 },
+    { name: "Sept", Total: 0 },
+    { name: "Oct", Total: 0 },
+    { name: "Nov", Total: 0 },
+    { name: "Dec", Total: 0 },
+  ];
+
+  useEffect(() => {
+    console.log(number_pass);
+    console.log(data);
+    set_data_detail([...temp]);
+  }, [temp]);
+
+  // console.log(data_detail)
+  data_detail.forEach((data_row) => {
+    if (data_row != undefined &&data_row.result_handle == 1) {
+      const month = data_row.time_create.getMonth() + 1;
+      switch (month) {
+        case 1:
+          number_pass.on_jan++;
+          data[0].Total = number_pass.on_jan;
+          break;
+        case 2:
+          number_pass.on_fev++;
+          data[1].Total = number_pass.on_fev;
+          break;
+        case 3:
+          number_pass.on_mar++;
+          data[2].Total = number_pass.on_mar;
+          break;
+        case 4:
+          number_pass.on_apr++;
+          data[3].Total = number_pass.on_apr;
+          break;
+        case 5:
+          number_pass.on_may++;
+          data[4].Total = number_pass.on_may;
+          break;
+        case 6:
+          number_pass.on_june++;
+          data[5].Total = number_pass.on_june;
+          break;
+        case 7:
+          number_pass.on_july++;
+          data[6].Total = number_pass.on_july;
+          break;
+        case 8:
+          number_pass.on_aug++;
+          data[7].Total = number_pass.on_aug;
+          break;
+        case 9:
+          number_pass.on_sept++;
+          data[8].Total = number_pass.on_sept;
+          break;
+        case 10:
+          number_pass.on_oct++;
+          data[9].Total = number_pass.on_oct;
+          break;
+        case 11:
+          number_pass.on_nov++;
+          data[10].Total = number_pass.on_nov;
+          break;
+        case 12:
+          number_pass.on_dec++;
+          data[11].Total = number_pass.on_dec;
+          break;
+      }
+    }
+  });
   return (
     <div className="chart">
       <div className="title">{title}</div>
@@ -56,29 +119,11 @@ const Chart = ({ aspect, title }) => {
             data={data}
             margin={{ top: 25, right: 30, left: 0, bottom: 0 }}
           >
-            {/* <defs>
-            <linearGradient id="total" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
-              <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
-            </linearGradient>
-          </defs>
-          <XAxis dataKey="name" stroke="gray" />
-          <CartesianGrid strokeDasharray="3 3" className="chartGrid" />
-          <Tooltip />
-          <Area
-            type="monotone"
-            dataKey="Total"
-            stroke="#8884d8"
-            fillOpacity={1}
-            fill="url(#total)"
-          /> */}
             <CartesianGrid strokeDasharray="3 3" className="chartGrid" />
             <XAxis dataKey="name" />
             <YAxis />
             <Tooltip />
-            {/* <Legend /> */}
             <Bar dataKey="Total" fill="#8884d8" />
-            {/* <Bar dataKey="uv" fill="#82ca9d" /> */}
           </BarChart>
         </ResponsiveContainer>
       </div>

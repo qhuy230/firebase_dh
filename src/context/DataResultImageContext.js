@@ -38,11 +38,13 @@ export const DataResultImageProvider = ({ children }) => {
               if (tempData["time_create"] !== undefined) {
                 var t = new Date(1970, 0, 1);
                 t.setSeconds(tempData["time_create"].seconds);
-                tempData.time_create =
-                  t.toLocaleDateString() + " " + t.toLocaleTimeString();
+                // tempData.time_create =
+                  // t.toLocaleDateString() + " " + t.toLocaleTimeString();
+                tempData.time_create=t
               }
-              return [...prevRows, tempData];
+              return [tempData,...prevRows];
             }
+            
           });
         }
       });

@@ -12,7 +12,6 @@ export const userColumns = [
         </div>
       );
     },
-    
   },
   {
     field: "email",
@@ -33,34 +32,32 @@ export const userColumns = [
 ];
 
 export const logColumns = [
-  { field: "count", headerName: "#", Width: "100wh" },
+  { field: "id", headerName: "#", Width: "100wh" },
   {
     field: "name",
     headerName: "Name",
-    width: 230,    
+    width: 230,
+  },
+  {
+    field: "time_create",
+    headerName: "Date",
+    width: 250,
+    renderCell: (params) => {
+      return <div>{params.row.time_create.toLocaleDateString()+" "+params.row.time_create.toLocaleTimeString()}</div>;
+    },
   },
   {
     field: "result_handle",
     headerName: "Result",
     width: 230,
     renderCell: (params) => {
-      return (
-        <div>
-          {params.row.result_handle == "1" ? "Pass" : "Not Pass"}
-        </div>
-      );
+      return <div>{params.row.result_handle == "1" ? "Pass" : "Not Pass"}</div>;
     },
   },
 
   {
-    field: "time_create",
-    headerName: "Date",
-    width: 200,
-  },
-  {
     field: "imageResult",
     headerName: "Image Result",
-    width: 100,
+    width: 200,
   },
 ];
-
