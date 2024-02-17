@@ -43,7 +43,13 @@ export const logColumns = [
     headerName: "Date",
     width: 250,
     renderCell: (params) => {
-      return <div>{params.row.time_create.toLocaleDateString()+" "+params.row.time_create.toLocaleTimeString()}</div>;
+      return (
+        <div>
+          {params.row.time_create != undefined ? params.row.time_create.toLocaleDateString() +
+            " " +
+            params.row.time_create.toLocaleTimeString() : ""}
+        </div>
+      );
     },
   },
   {

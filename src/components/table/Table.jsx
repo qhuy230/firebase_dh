@@ -11,7 +11,13 @@ const List = () => {
   var sortData =data.sort(
     (objA, objB) =>  {
       // console.log(objA)
-      return objB.time_create.getTime()-objA.time_create.getTime()},
+      try{
+        return objB.time_create.getTime()-objA.time_create.getTime()
+      }catch(e){
+        return 0
+      }
+      }
+
   );
   // console.log(sortData)
   return (
