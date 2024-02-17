@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import { collection, query, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
 
-const Widget = ({ type }) => {
+const Widget = ({ type,display_parent }) => {
   let data;
 
   const [amount, setAmount] = useState(null);
@@ -45,7 +45,7 @@ const Widget = ({ type }) => {
   switch (type) {
     case "user":
       data = {
-        title: "USERS",
+        title: "USER ONLINE",
         isMoney: false,
         // link: "See all users",
         icon: (
@@ -109,7 +109,7 @@ const Widget = ({ type }) => {
   }
 
   return (
-    <div className="widget">
+    <div className="widget" style={{display: display_parent}}>
       <div className="left">
         <span className="title">{data.title}</span>
         <span className="counter">

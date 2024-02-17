@@ -1,8 +1,8 @@
 .sidebar {
   flex: 0;
-  border-right: 0.5px solid rgb(230, 227, 227);
+  // border-right: 0.5px solid rgb(230, 227, 227);
   min-height: 100vh;
-  background-color: white;
+  background-color: #F4F7FC;
 
   .top {
     height: 50px;
@@ -14,7 +14,7 @@
 
 
     .logo {
-      font-size: 25px;
+      font-size: 23px;
       font-weight: bold;
       color: #6439ff;
       text-align: center;
@@ -43,16 +43,28 @@
         margin-bottom: 5px;
       }
 
+      #active {
+        background-color: #FFD700;
+        border-radius: 15%;
+      }
+
       li {
         display: flex;
         align-items: center;
-        padding: 20px;
+        padding-bottom: 19px;
+        padding-top: 19px;
+        padding-left: 15px;
+        padding-right: 15px;
         flex-direction: column;
+        border-radius: 15%;
         cursor: pointer;
 
         &:hover,&:active,&:focus   {
           background-color: #e4e0fc;
-          border-radius: 10%;
+          border-radius: 15%;
+          .icon{
+            color: #1972cc;
+          }
         } 
         &:target{
           background-color: #333;
@@ -63,7 +75,9 @@
 
         .icon {
           font-size: 35px;
-          color: #7451f8;
+          // color: #7451f8;
+          color: #1E90FF;
+          // color: whi;
         }
 
         span{
