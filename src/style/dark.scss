@@ -6,20 +6,20 @@
     stroke: rgba(228, 228, 228, 0.219);
   }
 
-  .table {
-    background-color: #202124;
-
-    .tableCell {
-      color: gray;
-    }
-  }
-
   .navbar {
     color: #999;
     border-color: #333;
 
     .search {
       border-color: gray;
+    }
+  }
+
+  .widget{
+    .left{
+      .counter{
+        color: rgb(160, 160, 160)
+      }
     }
   }
 
@@ -49,7 +49,7 @@
     }
   }
 
-  .datatable {
+  .table {
     .datagrid {
       color: gray;
       border: none;
@@ -57,6 +57,21 @@
       .viewButton,
       .deleteButton,
       .cellWithStatus {
+        color: gray;
+        border: none;
+      }
+    }
+  }
+
+  .datatable {
+    .datagrid {
+      color: gray;
+      border: none;
+
+      .viewButton,
+      .deleteButton,
+      .cellWithStatus 
+      {
         color: gray;
         border: none;
       }

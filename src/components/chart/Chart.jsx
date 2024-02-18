@@ -8,6 +8,7 @@ import {
   BarChart,
   YAxis,
   Bar,
+  Legend,
 } from "recharts";
 
 import { DataResultImageContext } from "../../context/DataResultImageContext";
@@ -31,19 +32,34 @@ const Chart = ({ aspect, title }) => {
     on_dec: 0,
   };
 
+  var number_total = {
+    on_jan: 0,
+    on_fev: 0,
+    on_mar: 0,
+    on_apr: 0,
+    on_may: 0,
+    on_june: 0,
+    on_july: 0,
+    on_aug: 0,
+    on_sept: 0,
+    on_oct: 0,
+    on_nov: 0,
+    on_dec: 0,
+  };
+
   var data = [
-    { name: "Jan", Total: 0 },
-    { name: "Fev", Total: 0 },
-    { name: "Mar", Total: 0 },
-    { name: "Apr", Total: 0 },
-    { name: "May", Total: 0 },
-    { name: "June", Total: 0 },
-    { name: "July", Total: 0 },
-    { name: "Aug", Total: 0 },
-    { name: "Sept", Total: 0 },
-    { name: "Oct", Total: 0 },
-    { name: "Nov", Total: 0 },
-    { name: "Dec", Total: 0 },
+    { name: "Jan", Total: 0, Pass: 0 },
+    { name: "Fev", Total: 0, Pass: 0 },
+    { name: "Mar", Total: 0, Pass: 0 },
+    { name: "Apr", Total: 0, Pass: 0 },
+    { name: "May", Total: 0, Pass: 0 },
+    { name: "June", Total: 0, Pass: 0 },
+    { name: "July", Total: 0, Pass: 0 },
+    { name: "Aug", Total: 0, Pass: 0 },
+    { name: "Sept", Total: 0, Pass: 0 },
+    { name: "Oct", Total: 0, Pass: 0 },
+    { name: "Nov", Total: 0, Pass: 0 },
+    { name: "Dec", Total: 0, Pass: 0 },
   ];
 
   useEffect(() => {
@@ -52,58 +68,81 @@ const Chart = ({ aspect, title }) => {
     set_data_detail([...temp]);
   }, [temp]);
 
-  // console.log(data_detail)
   data_detail.forEach((data_row) => {
-    if (data_row != undefined &&data_row.result_handle == 1) {
+    if (data_row != undefined) {
       const month = data_row.time_create.getMonth() + 1;
       switch (month) {
         case 1:
-          number_pass.on_jan++;
-          data[0].Total = number_pass.on_jan;
+          if (data_row.result_handle == 1) number_pass.on_jan++;
+          number_total.on_jan++;
+          data[0].Total = number_total.on_jan;
+          data[0].Pass = number_pass.on_jan;
           break;
         case 2:
-          number_pass.on_fev++;
-          data[1].Total = number_pass.on_fev;
+          if (data_row.result_handle == 1) number_pass.on_fev++;
+          number_total.on_fev++;
+          data[1].Pass = number_pass.on_fev;
+          data[1].Total = number_total.on_fev;
           break;
         case 3:
-          number_pass.on_mar++;
-          data[2].Total = number_pass.on_mar;
+          if (data_row.result_handle == 1) number_pass.on_mar++;
+          number_total.on_mar++;
+          data[2].Pass = number_pass.on_mar;
+          data[2].Total = number_total.on_mar;
           break;
         case 4:
-          number_pass.on_apr++;
-          data[3].Total = number_pass.on_apr;
+          if (data_row.result_handle == 1) number_pass.on_apr++;
+          number_total.on_apr++;
+          data[3].Pass = number_pass.on_apr;
+          data[3].Total = number_total.on_apr;
           break;
         case 5:
-          number_pass.on_may++;
-          data[4].Total = number_pass.on_may;
+          if (data_row.result_handle == 1) number_pass.on_may++;
+          number_total.on_may++;
+          data[4].Pass = number_pass.on_may;
+          data[4].Total = number_total.on_may;
           break;
         case 6:
-          number_pass.on_june++;
-          data[5].Total = number_pass.on_june;
+          if (data_row.result_handle == 1) number_pass.on_june++;
+          number_total.on_june++;
+          data[5].Pass = number_pass.on_june;
+          data[5].Total = number_total.on_june;
           break;
         case 7:
-          number_pass.on_july++;
-          data[6].Total = number_pass.on_july;
+          if (data_row.result_handle == 1) number_pass.on_july++;
+          number_total.on_july++;
+          data[6].Pass = number_pass.on_july;
+          data[6].Total = number_total.on_july;
           break;
         case 8:
-          number_pass.on_aug++;
-          data[7].Total = number_pass.on_aug;
+          if (data_row.result_handle == 1) number_pass.on_aug++;
+          number_total.on_aug++;
+          data[7].Pass = number_pass.on_aug;
+          data[7].Total = number_total.on_aug;
           break;
         case 9:
-          number_pass.on_sept++;
-          data[8].Total = number_pass.on_sept;
+          if (data_row.result_handle == 1) number_pass.on_sept++;
+          number_total.on_sept++;
+          data[8].Pass = number_pass.on_sept;
+          data[8].Total = number_total.on_sept;
           break;
         case 10:
-          number_pass.on_oct++;
-          data[9].Total = number_pass.on_oct;
+          if (data_row.result_handle == 1) number_pass.on_oct++;
+          number_total.on_oct++;
+          data[9].Pass = number_pass.on_oct;
+          data[9].Total = number_total.on_oct;
           break;
         case 11:
-          number_pass.on_nov++;
-          data[10].Total = number_pass.on_nov;
+          if (data_row.result_handle == 1) number_pass.on_nov++;
+          number_total.on_nov++;
+          data[10].Pass = number_pass.on_nov;
+          data[10].Total = number_total.on_nov;
           break;
         case 12:
-          number_pass.on_dec++;
-          data[11].Total = number_pass.on_dec;
+          if (data_row.result_handle == 1) number_pass.on_dec++;
+          number_total.on_dec++;
+          data[11].Pass = number_pass.on_dec;
+          data[11].Total = number_total.on_dec;
           break;
       }
     }
@@ -123,7 +162,9 @@ const Chart = ({ aspect, title }) => {
             <XAxis dataKey="name" />
             <YAxis />
             <Tooltip />
-            <Bar dataKey="Total" fill="#1972CC" />
+            <Legend />
+            <Bar dataKey="Total" stackId="a" fill="#1972CC" />
+            <Bar dataKey="Pass" stackId="a" fill="#82ca9d" />
           </BarChart>
         </ResponsiveContainer>
       </div>

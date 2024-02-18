@@ -53,13 +53,13 @@ const Sidebar = () => {
     const data = JSON.parse(localStorage.getItem("data_user"));
     setDataUser(data);
     if (RequireAuthe() == 0)
-      document.getElementsByClassName("userLink")[0].style.display = "block";
+      document.getElementsByClassName("userLink")[0].style.display = "";
   }, []);
 
   return (
     <div className="sidebar">
-      <div className="top" onClick={()=>navitage("/")} style={{cursor:"pointer"}}>
-          <span className="logo">{dataUser.fullName}</span>
+      <div className="top">
+        {/* <span className="logo">{dataUser.fullName}</span> */}
       </div>
       <div className="center">
         <ul>
@@ -72,17 +72,17 @@ const Sidebar = () => {
             <HomeIcon className="icon" />
             <span>Dashboard</span>
           </li>
-          <Link
-            to="/users"
-            style={{ textDecoration: "none", display: "none" }}
+          <li
+            onClick={() => {
+              navitage("/users");
+            }}
+            // style={{ textDecoration: "none", display: "none" }}
             className="userLink"
             id={location.pathname === "/users" ? "active" : ""}
           >
-            <li>
-              <PeopleAltIcon className="icon" />
-              <span>Users</span>
-            </li>
-          </Link>
+            <PeopleAltIcon className="icon" />
+            <span>Users</span>
+          </li>
           <li
             id={location.pathname === "/Log" ? "active" : ""}
             onClick={() => {

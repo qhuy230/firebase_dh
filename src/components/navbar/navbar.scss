@@ -21,8 +21,12 @@
     .items {
       display: flex;
       align-items: center;
-      cursor: pointer;
-
+      .logo{
+        font-size: 23px;
+        font-weight: bold;
+        color: #6439ff;
+        text-align: center;
+      }
       .item {
         display: flex;
         align-items: center;
@@ -30,7 +34,7 @@
         position: relative;
 
         .icon {
-          font-size: 20px;
+          font-size: 22px;
         }
 
         .avatar {
@@ -55,6 +59,15 @@
           right: -5px;
         }
       }
+    }
+    .theme{
+      padding: 13px;
+      cursor: pointer;
+
+    }
+    .theme:hover{
+      background-color: #e4e0fc;
+      border-radius: 50%;
     }
   }
 }

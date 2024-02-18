@@ -48,15 +48,15 @@ const Widget = ({ type,display_parent }) => {
         title: "USER ONLINE",
         isMoney: false,
         // link: "See all users",
-        icon: (
-          <PersonOutlinedIcon
-            className="icon"
-            style={{
-              color: "crimson",
-              backgroundColor: "rgba(255, 0, 0, 0.2)",
-            }}
-          />
-        ),
+        // icon: (
+        //   <PersonOutlinedIcon
+        //     className="icon"
+        //     style={{
+        //       color: "crimson",
+        //       backgroundColor: "rgba(255, 0, 0, 0.2)",
+        //     }}
+        //   />
+        // ),
       };
       break;
     case "status_Motor":
@@ -64,15 +64,15 @@ const Widget = ({ type,display_parent }) => {
         title: "MOTOR",
         isMoney: false,
         // link: "View all orders",
-        icon: (
-          <ShoppingCartOutlinedIcon
-            className="icon"
-            style={{
-              backgroundColor: "rgba(218, 165, 32, 0.2)",
-              color: "goldenrod",
-            }}
-          />
-        ),
+        // icon: (
+        //   <ShoppingCartOutlinedIcon
+        //     className="icon"
+        //     style={{
+        //       backgroundColor: "rgba(218, 165, 32, 0.2)",
+        //       color: "goldenrod",
+        //     }}
+        //   />
+        // ),
       };
       break;
     case "status_Camera":
@@ -80,12 +80,12 @@ const Widget = ({ type,display_parent }) => {
         title: "CAMERA",
         isMoney: true,
         // link: "View net earnings",
-        icon: (
-          <MonetizationOnOutlinedIcon
-            className="icon"
-            style={{ backgroundColor: "rgba(0, 128, 0, 0.2)", color: "green" }}
-          />
-        ),
+        // icon: (
+        //   <MonetizationOnOutlinedIcon
+        //     className="icon"
+        //     style={{ backgroundColor: "rgba(0, 128, 0, 0.2)", color: "green" }}
+        //   />
+        // ),
       };
       break;
     case "status_overall":
@@ -93,15 +93,15 @@ const Widget = ({ type,display_parent }) => {
         title: "STATUS",
         isMoney: true,
         // link: "See details",
-        icon: (
-          <AccountBalanceWalletOutlinedIcon
-            className="icon"
-            style={{
-              backgroundColor: "rgba(128, 0, 128, 0.2)",
-              color: "purple",
-            }}
-          />
-        ),
+        // icon: (
+        //   <AccountBalanceWalletOutlinedIcon
+        //     className="icon"
+        //     style={{
+        //       backgroundColor: "rgba(128, 0, 128, 0.2)",
+        //       color: "purple",
+        //     }}
+        //   />
+        // ),
       };
       break;
     default:
