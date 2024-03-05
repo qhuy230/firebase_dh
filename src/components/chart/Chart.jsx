@@ -69,8 +69,13 @@ const Chart = ({ aspect, title }) => {
   }, [temp]);
 
   data_detail.forEach((data_row) => {
+    var month=0;
     if (data_row != undefined) {
-      const month = data_row.time_create.getMonth() + 1;
+      try{
+        month = data_row.time_create.getMonth() + 1;
+      }catch(e){
+        return;
+      }
       switch (month) {
         case 1:
           if (data_row.result_handle == 1) number_pass.on_jan++;

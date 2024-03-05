@@ -36,10 +36,10 @@ export const DataResultImageProvider = ({ children }) => {
               tempData["id"] = change.doc.id;
               tempData["count"] = change.newIndex + 1;
               if (tempData["time_create"] !== undefined) {
-                var t = new Date(1970, 0, 1);
+                // var t = new Date(1970, 0, 1);
+                var t = new Date("January 1, 1970 07:00:00 (ICT)");
+                // console.log(newd)
                 t.setSeconds(tempData["time_create"].seconds);
-                // tempData.time_create =
-                  // t.toLocaleDateString() + " " + t.toLocaleTimeString();
                 tempData.time_create=t
               }
               return [tempData,...prevRows];

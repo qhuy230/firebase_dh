@@ -55,14 +55,14 @@ const Login = () => {
           <div className="txt_field">
             <input
               type="email"
-              placeholder="Email"
+              placeholder="Email test: phamquochuy@dev.com"
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="txt_field">
             <input
               type="password"
-              placeholder="Password"
+              placeholder="Password: 123456"
               onChange={(e) => {return setPassword(e.target.value)}}
             />
           </div>
