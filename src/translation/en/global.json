@@ -1,0 +1,17 @@
+{
+    "header":{
+        "message" : "Welcome to "
+    },
+    "home":{
+        "body":"Body"
+    },
+    "sidebar":{
+        "Dashboard": "Dashboard",
+        "Users":"Users",
+        "Logs":"Logs",
+        "Setting": "Language",
+        "Profile": "Profile",
+        "Logout": "Logout"
+    }
+
+}

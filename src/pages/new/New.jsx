@@ -8,7 +8,7 @@ import { db, auth, storage } from "../../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { useNavigate } from "react-router-dom";
-import CloseIcon from '@mui/icons-material/Close';
+import CloseIcon from "@mui/icons-material/Close";
 
 const New = ({ inputs, title }) => {
   const [file, setFile] = useState("");
@@ -20,7 +20,7 @@ const New = ({ inputs, title }) => {
   useEffect(() => {
     const upload = () => {
       setUploadImg(1);
-      const storageRef = ref(storage, "AvatarUser/"+file.name);
+      const storageRef = ref(storage, "AvatarUser/" + file.name);
 
       const uploadTask = uploadBytesResumable(storageRef, file);
 
@@ -38,10 +38,9 @@ const New = ({ inputs, title }) => {
               console.log("Upload is running");
               break;
           }
-         
         },
         (error) => {
-          setStatus=error;
+          setStatus = error;
           console.log(error);
         },
         () => {
@@ -49,6 +48,7 @@ const New = ({ inputs, title }) => {
           // For instance, get the download URL: https://firebasestorage.googleapis.com/...
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
             console.log("File available at", downloadURL);
+            setData({ ...data, avatar: downloadURL });
           });
         }
       );
@@ -67,24 +67,33 @@ const New = ({ inputs, title }) => {
 
   const handleSumbmit = async (e) => {
     e.preventDefault();
+    const btn_submit = document.getElementsByClassName("submit")[0];
+    btn_submit.style.display= "none"
+    const loader = document.getElementsByClassName("loader")[0];
+    loader.style.display= "block"
+
     try {
       const res = await createUserWithEmailAndPassword(
         auth,
         data.email,
         data.password
       );
-      if(isUploadImg==0){
-        setData({...data,avatar: "https://firebasestorage.googleapis.com/v0/b/demorealtime-d1e78.appspot.com/o/AvatarUser%2Fuser.png?alt=media&token=24f0f20e-9ab3-4647-8b97-e0c2fc33503a"})
+      if (isUploadImg == 0) {
+        setData({
+          ...data,
+          avatar:
+            "https://firebasestorage.googleapis.com/v0/b/demorealtime-d1e78.appspot.com/o/AvatarUser%2Fuser.png?alt=media&token=24f0f20e-9ab3-4647-8b97-e0c2fc33503a",
+        });
       }
       await setDoc(doc(db, "users", res.user.uid), {
         ...data,
         TimeCreate: serverTimestamp(),
       });
-      setStatus("Success")
-      navitage("/users")
+      setStatus("Success");
+      navitage("/users");
     } catch (err) {
-      setStatus=err.message;
-      setStatus("error")
+      setStatus = err.message;
+      setStatus("error");
     }
   };
 
@@ -95,20 +104,20 @@ const New = ({ inputs, title }) => {
         <Navbar />
         <div className="top">
           <h1>{title}</h1>
-          <div className="arrowBack" onClick={()=> navitage("/users")}>
-            <CloseIcon/>
+          <div className="arrowBack" onClick={() => navitage("/users")}>
+            <CloseIcon className="closeIcon"/>
           </div>
         </div>
         <div className="bottom">
           <div className="left">
             <label htmlFor="file2">
-              <DriveFolderUploadOutlinedIcon className="icon" />
+              <DriveFolderUploadOutlinedIcon className="icon" style={{cursor: "pointer"}}/>
             </label>
             <input
               type="file"
               id="file2"
               onChange={(e) => setFile(e.target.files[0])}
-              style={{ display: "none"}}
+              style={{ display: "none" }}
             />
             <img
               src={
@@ -133,9 +142,13 @@ const New = ({ inputs, title }) => {
                   />
                 </div>
               ))}
-              <button type="submit">Send</button>
+              <div class="loader"></div>
+              <button type="submit" className="submit">
+                Send
+              </button>
+              
             </form>
-            <p>Status: {status}</p>
+            {/* <p>Status: {status}</p> */}
           </div>
         </div>
       </div>

@@ -1,0 +1,16 @@
+{
+    "header":{
+        "message" : "Chào mừng"
+    },
+    "home":{
+        "body":"Thân"
+    },
+    "sidebar":{
+        "Dashboard": "Trang Chủ",
+        "Users":"Người Dùng",
+        "Logs":"Lịch Sử",
+        "Setting": "Ngôn Ngữ",
+        "Profile": "Thông Tin",
+        "Logout": "Đăng Xuất"
+    }
+}

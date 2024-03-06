@@ -13,12 +13,14 @@ import { useNavigate } from "react-router-dom";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import { useEffect } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import { useTranslation } from "react-i18next";
 
 const Sidebar = () => {
   const navitage = useNavigate();
   const { currentUser } = useContext(AuthContext);
   const { dispatch } = useContext(DarkModeContext);
   const location = useLocation();
+  const [t,i18n]= useTranslation("global")
 
   const [dataUser, setDataUser] = useState({
     avatar:
@@ -70,7 +72,7 @@ const Sidebar = () => {
             }}
           >
             <HomeIcon className="icon" />
-            <span>Dashboard</span>
+            <span>{t("sidebar.Dashboard")}</span>
           </li>
           <li
             onClick={() => {
@@ -78,10 +80,10 @@ const Sidebar = () => {
             }}
             // style={{ textDecoration: "none", display: "none" }}
             className="userLink"
-            id={location.pathname === "/users" ? "active" : ""}
+            id={location.pathname === "/users" || location.pathname === "/users/new" ? "active" : ""}
           >
             <PeopleAltIcon className="icon" />
-            <span>Users</span>
+            <span>{t("sidebar.Users")}</span>
           </li>
           <li
             id={location.pathname === "/Log" ? "active" : ""}
@@ -90,11 +92,14 @@ const Sidebar = () => {
             }}
           >
             <SourceIcon className="icon" />
-            <span>Logs</span>
-          </li>
-          <li>
+            <span>{t("sidebar.Logs")}</span>
+          </li >
+          <li id={location.pathname === "/setting" ? "active" : ""}
+            onClick={() => {
+              navitage("/setting");
+            }}>
             <SettingsIcon className="icon" />
-            <span>Settings</span>
+            <span>{t("sidebar.Setting")}</span>
           </li>
           <li
             id={location.pathname === "/Single" ? "active" : ""}
@@ -103,11 +108,12 @@ const Sidebar = () => {
             }}
           >
             <AccountCircleOutlinedIcon className="icon" />
-            <span>Profile</span>
+            <span>{t("sidebar.Profile")}</span>
           </li>
           <li onClick={logout}>
             <ExitToAppIcon className="icon" />
-            <span>Logout</span>
+            {/* <span>Đăng Xuất</span> */}
+            <span>{t("sidebar.Logout")}</span>
           </li>
         </ul>
       </div>

@@ -1,0 +1,19 @@
+.setting {
+    display: flex;
+    .settingHeader {
+        flex: 6;
+        .logContainer{
+            padding: 20px;
+        }
+        // .logTitle{
+        //     width: 100%;
+        //     font-size: 24px;
+        //     color: gray;
+        //     margin-bottom: 10px;
+        //     display: flex;
+        //     align-items: center;
+        //     justify-content: space-between;
+        
+        // }
+    }
+}

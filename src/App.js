@@ -12,6 +12,7 @@ import { AuthContext } from "./context/AuthContext";
 import Log from "./pages/logs/log";
 import Register from "./pages/register/Register";
 import Guest from "./pages/guest/Guest";
+import Setting from "./pages/setting/setting";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -65,6 +66,7 @@ function App() {
                 </RequireAuth>
               }
             />
+            <Route path="setting" element={<Setting />} />
             <Route path="users">
               <Route
                 index

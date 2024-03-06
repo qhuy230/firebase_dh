@@ -10,11 +10,11 @@ import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
 import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import { useTranslation } from "react-i18next";
 
 const Navbar = () => {
   const { dispatch, darkMode } = useContext(DarkModeContext);
-  const { currentUser } = useContext(AuthContext);
-
+  const [t,i18n]= useTranslation("global")
   const [dataUser, setDataUser] = useState({
     avatar:
       "https://firebasestorage.googleapis.com/v0/b/demorealtime-d1e78.appspot.com/o/AvatarUser%2Fuser.png?alt=media&token=24f0f20e-9ab3-4647-8b97-e0c2fc33503a",
@@ -33,9 +33,9 @@ const Navbar = () => {
       <div className="wrapper">
         <div className="search"></div>
         <div className="items">
-          <div className="item">
+          <div className="item" style={{fontWeight: "bold"}}>
             <LanguageOutlinedIcon className="icon" />
-            English
+            {i18n.language.toLocaleUpperCase()}
           </div>
           <div
             className="item theme"

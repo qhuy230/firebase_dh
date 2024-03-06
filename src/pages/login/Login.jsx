@@ -57,6 +57,7 @@ const Login = () => {
               type="email"
               placeholder="Email test: phamquochuy@dev.com"
               onChange={(e) => setEmail(e.target.value)}
+              // value={"phamquochuy"}
             />
           </div>
           <div className="txt_field">
