@@ -5,12 +5,15 @@ import Widget from "../../components/widget/Widget";
 import Featured from "../../components/featured/Featured";
 import Chart from "../../components/chart/Chart";import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import { DataStateActuatorContext } from "../../context/DataStateActuatorContext";
 ;
 
 
 const Home = () => {
   const { currentUser } = useContext(AuthContext);
   const [auth_style,set_auth_styple]= useState("none")
+  var datas = useContext(DataStateActuatorContext).datas;
+
   const RequireAuthe = () => {
     const authe = JSON.parse(localStorage.getItem("data_user"));
     if (currentUser) {
@@ -34,10 +37,11 @@ const Home = () => {
       <div className="homeContainer">
         <Navbar />
         <div className="widgets">
-          <Widget type="user" display_parent={auth_style}/>
-          <Widget type="status_Motor" />
-          <Widget type="status_Camera" />
-          <Widget type="status_overall" />
+          <Widget type="USER ONLINE" display_parent={auth_style} data="1"/>
+          <Widget type="MOTOR" data={datas.Motor}/>
+          <Widget type="CAMERA" data={datas.Camera}/>
+          <Widget type="SYSTEM" data={datas.System}/>
+          {console.log(datas)}
         </div>
         <div className="charts">
           <Featured />

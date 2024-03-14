@@ -63,8 +63,6 @@ const Chart = ({ aspect, title }) => {
   ];
 
   useEffect(() => {
-    console.log(number_pass);
-    console.log(data);
     set_data_detail([...temp]);
   }, [temp]);
 

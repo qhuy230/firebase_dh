@@ -6,6 +6,7 @@ import i18next from "i18next";
 import { AuthContextProvider } from "./context/AuthContext";
 import { DarkModeContextProvider } from "./context/darkModeContext";
 import { DataResultImageProvider } from "./context/DataResultImageContext";
+import { DataStateActuatorProvider } from "./context/DataStateActuatorContext";
 
 import global_en from "./translation/en/global.json";
 import global_vi from "./translation/vi/global.json";
@@ -27,7 +28,9 @@ ReactDOM.render(
       <DarkModeContextProvider>
         <AuthContextProvider>
           <DataResultImageProvider>
-            <App />
+            <DataStateActuatorProvider>
+              <App />
+            </DataStateActuatorProvider>
           </DataResultImageProvider>
         </AuthContextProvider>
       </DarkModeContextProvider>
